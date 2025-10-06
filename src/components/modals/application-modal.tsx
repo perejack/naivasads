@@ -141,6 +141,13 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
             // Show survey ads when payment fails
             showPopupAd(2000, 3); // Show after 2 seconds with ad index 3
             toast.error("Payment failed. Please try again.");
+          } else if (status === 'CANCELLED') {
+            clearInterval(interval);
+            setPaymentStatusInterval(null);
+            setIsProcessingPayment(false);
+            // Show survey ads when payment is cancelled
+            showPopupAd(1000, 2); // Show after 1 second with ad index 2
+            toast.error("Payment was cancelled. Please try again.");
           }
         }
       } catch (error) {
@@ -157,6 +164,8 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
         setPaymentStatusInterval(null);
         if (paymentData.paymentStatus === 'PENDING') {
           setIsProcessingPayment(false);
+          // Show survey ads when payment times out
+          showPopupAd(1500, 1); // Show after 1.5 seconds with ad index 1
           toast.error("Payment timeout. Please try again.");
         }
       }
@@ -191,13 +200,21 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
     toast.success("Refund code copied to clipboard!");
   };
 
+  const handleModalClose = () => {
+    // Show survey ads when user closes modal via X button or ESC
+    showPopupAd(0, 2); // Show immediately with ad index 2
+    setTimeout(() => {
+      onClose();
+    }, 100); // Small delay to ensure popup shows before modal closes
+  };
+
   if (!job) return null;
 
   const totalPackage = job.salary + job.medicalAllowance;
 
   return (
     <>
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={handleModalClose}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader className="space-y-4">
           <DialogTitle className="text-2xl font-bold flex items-center gap-2">
@@ -359,9 +376,11 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
                   type="button"
                   variant="outline"
                   onClick={() => {
-                    // Show survey ads when user cancels
+                    // Show survey ads when user cancels - delay close to allow popup to show
                     showPopupAd(0, 2); // Show immediately with ad index 2
-                    onClose();
+                    setTimeout(() => {
+                      onClose();
+                    }, 100); // Small delay to ensure popup shows before modal closes
                   }}
                   className="flex-1"
                 >
