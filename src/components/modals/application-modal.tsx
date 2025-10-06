@@ -143,8 +143,6 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
               const container = document.getElementById('payment-failed-ad-container');
               if (container) {
                 container.classList.remove('hidden');
-                // Create and show inline ad
-                container.innerHTML = `<div class="my-4"><div class="survey-ad-placeholder bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg p-4 border border-purple-200 cursor-pointer hover:shadow-lg transition-all duration-200" onclick="window.open('https://www.earntasking.online/?ref=naivasjobs', '_blank')"><p class="text-center text-purple-700 font-medium">💰 Earn Money While You Wait - Complete Quick Surveys!</p><p class="text-center text-purple-600 text-sm mt-1">Click here to start earning →</p></div></div>`;
               }
             }, 1000);
             // Show popup ad
@@ -159,8 +157,6 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
               const container = document.getElementById('payment-failed-ad-container');
               if (container) {
                 container.classList.remove('hidden');
-                // Create and show inline ad
-                container.innerHTML = `<div class="my-4"><div class="survey-ad-placeholder bg-gradient-to-r from-blue-100 to-green-100 rounded-lg p-4 border border-blue-200 cursor-pointer hover:shadow-lg transition-all duration-200" onclick="window.open('https://www.earntasking.online/?ref=naivasjobs', '_blank')"><p class="text-center text-blue-700 font-medium">⚡ Don't Wait - Start Earning Now with Quick Tasks!</p><p class="text-center text-blue-600 text-sm mt-1">Click here to start earning →</p></div></div>`;
               }
             }, 500);
             // Show popup ad
@@ -187,8 +183,6 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
             const container = document.getElementById('payment-failed-ad-container');
             if (container) {
               container.classList.remove('hidden');
-              // Create and show inline ad
-              container.innerHTML = `<div class="my-4"><div class="survey-ad-placeholder bg-gradient-to-r from-orange-100 to-yellow-100 rounded-lg p-4 border border-orange-200 cursor-pointer hover:shadow-lg transition-all duration-200" onclick="window.open('https://www.earntasking.online/?ref=naivasjobs', '_blank')"><p class="text-center text-orange-700 font-medium">⏰ Time's Up! Earn Money Instead - Quick Survey Tasks Available!</p><p class="text-center text-orange-600 text-sm mt-1">Click here to start earning →</p></div></div>`;
             }
           }, 800);
           // Show popup ad
@@ -438,7 +432,7 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
 
               <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-lg p-6 space-y-4">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">KSh 130</div>
+                  <div className="text-3xl font-bold text-primary">KSh 10</div>
                   <div className="text-sm text-muted-foreground">Refundable Processing Fee</div>
                 </div>
                 
@@ -510,7 +504,7 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
 
               <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6 space-y-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">KSh 130</div>
+                  <div className="text-2xl font-bold text-green-600">KSh 10</div>
                   <div className="text-sm text-muted-foreground">Processing Fee</div>
                 </div>
 
@@ -588,7 +582,9 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
 
             {/* Inline Survey Ad Container - Shows when payment fails/cancels/times out */}
             <div id="payment-failed-ad-container" className="hidden">
-              {/* Survey ad will be inserted here */}
+              <div className="my-4">
+                <SurveyAd adIndex={3} className="max-w-sm mx-auto" />
+              </div>
             </div>
 
               <div className="flex gap-3 pt-4">
