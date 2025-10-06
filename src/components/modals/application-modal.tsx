@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
 import { CheckCircle, DollarSign, FileText, Phone, Mail, User, MapPin, GraduationCap, CreditCard, Copy, Shield, ArrowLeft, ArrowRight, smartphone, Clock, AlertCircle, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { PaymentSuccessModal } from "./payment-success-modal";
