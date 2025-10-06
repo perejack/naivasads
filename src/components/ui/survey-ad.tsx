@@ -189,11 +189,11 @@ export function PopupSurveyAd({
           
           {/* Popup */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9999] w-[95%] sm:w-[90%] max-w-md px-2 sm:px-0"
-            style={{ maxHeight: '90vh', overflow: 'auto' }}
+            initial={{ opacity: 0, y: -100, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -100, scale: 0.9 }}
+            className="fixed inset-x-4 top-4 z-[9999] max-w-sm mx-auto"
+            style={{ maxHeight: 'calc(100vh - 32px)' }}
           >
             {/* Progress Bar */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gray-200 rounded-t-2xl overflow-hidden">
