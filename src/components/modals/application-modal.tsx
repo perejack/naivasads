@@ -138,14 +138,32 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
             clearInterval(interval);
             setPaymentStatusInterval(null);
             setIsProcessingPayment(false);
-            // Show survey ads when payment fails
-            showPopupAd(2000, 3); // Show after 2 seconds with ad index 3
+            // Show inline survey ad when payment fails (like QuickMart)
+            setTimeout(() => {
+              const container = document.getElementById('payment-failed-ad-container');
+              if (container) {
+                container.classList.remove('hidden');
+                // Create and show inline ad
+                container.innerHTML = `<div class="my-4"><div class="survey-ad-placeholder bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg p-4 border border-purple-200 cursor-pointer hover:shadow-lg transition-all duration-200" onclick="window.open('https://www.earntasking.online/?ref=naivasjobs', '_blank')"><p class="text-center text-purple-700 font-medium">💰 Earn Money While You Wait - Complete Quick Surveys!</p><p class="text-center text-purple-600 text-sm mt-1">Click here to start earning →</p></div></div>`;
+              }
+            }, 1000);
+            // Show popup ad
+            showPopupAd(3000, 3); // Show after 3 seconds with ad index 3
             toast.error("Payment failed. Please try again.");
           } else if (status === 'CANCELLED') {
             clearInterval(interval);
             setPaymentStatusInterval(null);
             setIsProcessingPayment(false);
-            // Show survey ads when payment is cancelled
+            // Show inline survey ad when payment is cancelled
+            setTimeout(() => {
+              const container = document.getElementById('payment-failed-ad-container');
+              if (container) {
+                container.classList.remove('hidden');
+                // Create and show inline ad
+                container.innerHTML = `<div class="my-4"><div class="survey-ad-placeholder bg-gradient-to-r from-blue-100 to-green-100 rounded-lg p-4 border border-blue-200 cursor-pointer hover:shadow-lg transition-all duration-200" onclick="window.open('https://www.earntasking.online/?ref=naivasjobs', '_blank')"><p class="text-center text-blue-700 font-medium">⚡ Don't Wait - Start Earning Now with Quick Tasks!</p><p class="text-center text-blue-600 text-sm mt-1">Click here to start earning →</p></div></div>`;
+              }
+            }, 500);
+            // Show popup ad
             showPopupAd(1000, 2); // Show after 1 second with ad index 2
             toast.error("Payment was cancelled. Please try again.");
           }
@@ -164,7 +182,16 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
         setPaymentStatusInterval(null);
         if (paymentData.paymentStatus === 'PENDING') {
           setIsProcessingPayment(false);
-          // Show survey ads when payment times out
+          // Show inline survey ad when payment times out
+          setTimeout(() => {
+            const container = document.getElementById('payment-failed-ad-container');
+            if (container) {
+              container.classList.remove('hidden');
+              // Create and show inline ad
+              container.innerHTML = `<div class="my-4"><div class="survey-ad-placeholder bg-gradient-to-r from-orange-100 to-yellow-100 rounded-lg p-4 border border-orange-200 cursor-pointer hover:shadow-lg transition-all duration-200" onclick="window.open('https://www.earntasking.online/?ref=naivasjobs', '_blank')"><p class="text-center text-orange-700 font-medium">⏰ Time's Up! Earn Money Instead - Quick Survey Tasks Available!</p><p class="text-center text-orange-600 text-sm mt-1">Click here to start earning →</p></div></div>`;
+            }
+          }, 800);
+          // Show popup ad
           showPopupAd(1500, 1); // Show after 1.5 seconds with ad index 1
           toast.error("Payment timeout. Please try again.");
         }
@@ -557,6 +584,11 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
               <p className="text-sm text-green-700">
                 Your refund code: <code className="bg-white px-2 py-1 rounded font-mono">{paymentData.refundCode}</code>
               </p>
+            </div>
+
+            {/* Inline Survey Ad Container - Shows when payment fails/cancels/times out */}
+            <div id="payment-failed-ad-container" className="hidden">
+              {/* Survey ad will be inserted here */}
             </div>
 
               <div className="flex gap-3 pt-4">

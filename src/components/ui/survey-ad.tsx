@@ -183,7 +183,7 @@ export function PopupSurveyAd({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 z-40"
+            className="fixed inset-0 bg-black/20 z-[9998]"
             onClick={onClose}
           />
           
@@ -192,7 +192,7 @@ export function PopupSurveyAd({
             initial={{ opacity: 0, y: -100, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -100, scale: 0.9 }}
-            className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-md"
+            className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[9999] w-[90%] max-w-md"
           >
             {/* Progress Bar */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gray-200 rounded-t-2xl overflow-hidden">
