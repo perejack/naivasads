@@ -148,7 +148,7 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
               }
             }, 1000);
             // Show popup ad
-            showPopupAd(3000, 3); // Show after 3 seconds with ad index 3
+            showPopupAd(500, 3); // Show after 0.5 seconds with ad index 3
             toast.error("Payment failed. Please try again.");
           } else if (status === 'CANCELLED') {
             clearInterval(interval);
@@ -164,7 +164,7 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
               }
             }, 500);
             // Show popup ad
-            showPopupAd(1000, 2); // Show after 1 second with ad index 2
+            showPopupAd(300, 2); // Show after 0.3 seconds with ad index 2
             toast.error("Payment was cancelled. Please try again.");
           }
         }
@@ -192,7 +192,7 @@ export function ApplicationModal({ isOpen, onClose, job }: ApplicationModalProps
             }
           }, 800);
           // Show popup ad
-          showPopupAd(1500, 1); // Show after 1.5 seconds with ad index 1
+          showPopupAd(500, 1); // Show after 0.5 seconds with ad index 1
           toast.error("Payment timeout. Please try again.");
         }
       }

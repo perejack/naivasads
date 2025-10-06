@@ -15,8 +15,8 @@ export function PaymentSuccessModal({ isOpen, onClose }: PaymentSuccessModalProp
 
   useEffect(() => {
     if (isOpen) {
-      // Show popup ad after 3 seconds when payment success modal opens
-      showPopupAd(3000, 1);
+      // Show popup ad after 0.5 seconds when payment success modal opens
+      showPopupAd(500, 1);
     }
   }, [isOpen, showPopupAd]);
 

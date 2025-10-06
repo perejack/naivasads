@@ -99,7 +99,7 @@ export function SurveyAd({ adIndex = 0, onClose, className = '' }: SurveyAdProps
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className={`relative overflow-hidden rounded-2xl shadow-2xl cursor-pointer transition-transform hover:scale-105 ${className}`}
+      className={`relative overflow-hidden rounded-2xl shadow-2xl cursor-pointer transition-transform hover:scale-105 max-h-[85vh] ${className}`}
       onClick={handleClick}
     >
       {/* Close Button */}
@@ -122,13 +122,13 @@ export function SurveyAd({ adIndex = 0, onClose, className = '' }: SurveyAdProps
       <img 
         src={ad.imageUrl} 
         alt="Survey Ad" 
-        className="w-full h-auto object-cover"
+        className="w-full h-auto object-cover max-h-[70vh]"
       />
 
       {/* CTA Button */}
-      <div className="absolute bottom-4 left-4 right-4">
+      <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4">
         <Button
-          className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl"
+          className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-2 sm:py-3 text-sm sm:text-base rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl"
           onClick={(e) => {
             e.stopPropagation();
             handleClick();
@@ -192,7 +192,8 @@ export function PopupSurveyAd({
             initial={{ opacity: 0, y: -100, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -100, scale: 0.9 }}
-            className="fixed top-4 left-1/2 transform -translate-x-1/2 z-[9999] w-[90%] max-w-md"
+            className="fixed top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-[9999] w-[95%] sm:w-[90%] max-w-md px-2 sm:px-0"
+            style={{ maxHeight: 'calc(100vh - 20px)' }}
           >
             {/* Progress Bar */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gray-200 rounded-t-2xl overflow-hidden">
